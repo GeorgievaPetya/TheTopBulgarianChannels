@@ -1,6 +1,6 @@
 ﻿namespace TheTopBulgarianChannels.DataModels
 {
-    public class YouTubeCnannel
+    public class YouTubeChannel
     {
         public int Id { get; set; }
 
@@ -11,6 +11,10 @@
         public long Views { get; set; }  
 
         public string ChannelUrl { get; set; } 
+
+        public Category Category { get; set; }
+
+        public Country Country { get; set; }
 
     }
 }
