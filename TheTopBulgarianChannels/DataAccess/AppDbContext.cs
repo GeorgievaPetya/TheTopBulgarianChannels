@@ -11,5 +11,17 @@
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Country> Countries { get; set; }
+
+       protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Category>()
+                .HasMany(c => c.YouTubeChannels)
+                .WithOne(y => y.Category);
+
+            modelBuilder.Entity<Country>()
+               .HasMany(c => c.YouTubeChannels)
+               .WithOne(y => y.Country);
+        }
+    
     }
 }
