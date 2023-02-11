@@ -33,7 +33,7 @@ namespace TheTopBulgarianChannels.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "YouTubeCnannels",
+                name: "YouTubeChannels",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -64,19 +64,19 @@ namespace TheTopBulgarianChannels.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_YouTubeCnannels_CategoryId",
-                table: "YouTubeCnannels",
+                table: "YouTubeChannels",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_YouTubeCnannels_CountryId",
-                table: "YouTubeCnannels",
+                table: "YouTubeChannels",
                 column: "CountryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "YouTubeCnannels");
+                name: "YouTubeChannels");
 
             migrationBuilder.DropTable(
                 name: "Categories");

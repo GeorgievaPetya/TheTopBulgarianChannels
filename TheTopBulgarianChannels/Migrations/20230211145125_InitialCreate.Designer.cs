@@ -82,7 +82,7 @@ namespace TheTopBulgarianChannels.Migrations
 
                     b.HasIndex("CountryId");
 
-                    b.ToTable("YouTubeCnannels");
+                    b.ToTable("YouTubeChannels");
                 });
 
             modelBuilder.Entity("TheTopBulgarianChannels.DataModels.YouTubeChannel", b =>

@@ -6,7 +6,7 @@
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<YouTubeChannel> YouTubeCnannels { get; set; }
+        public DbSet<YouTubeChannel> YouTubeChannels { get; set; }
 
         public DbSet<Category> Categories { get; set; }
 
