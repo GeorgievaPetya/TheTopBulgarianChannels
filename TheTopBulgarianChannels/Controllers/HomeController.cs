@@ -21,7 +21,7 @@
         {
             var youTubeChannels = this.youTubeService.GetAll();
 
-            var model = new YouTubeChannelViewModel
+            var model = new YouTubeChannelViewModelList
             {
                 List = GetYouTubeChannelViewModel(youTubeChannels),
               

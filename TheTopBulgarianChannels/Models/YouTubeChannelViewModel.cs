@@ -19,6 +19,6 @@
         public Category Category { get; set; }
 
         public Country Country { get; set; }
-        public List<YouTubeChannelViewModel> List { get; internal set; }
+        
     }
 }
