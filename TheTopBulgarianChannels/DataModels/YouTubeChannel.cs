@@ -6,6 +6,8 @@
 
         public string ChannelName { get; set; }
 
+        public string ChannelHandel { get; set; }
+
         public int Subscribers { get; set; }
 
         public long Views { get; set; }  

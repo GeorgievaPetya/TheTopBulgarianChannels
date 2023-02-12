@@ -1,6 +1,13 @@
 ﻿@model YouTubeChannelViewModelList
 
-<table class="table">
+@if (Model == null || Model.List == null || Model.List.Count == 0)
+{
+    <h2>no added youtube channel at the moment</h2>
+    <div>Maybe you want to <a href="/Home/AddYouTubeChannel">add a YouTube Channel</a></div>
+}
+else
+{
+  <table class="table">
   <caption>List of users</caption>
   <thead>
     <tr>
@@ -10,7 +17,10 @@
       <th scope="col">Handle</th>
     </tr>
   </thead>
-  <tbody>
+  </table>
+    @foreach (var youtubechannel in Model.List)
+    {
+         <tbody>
     <tr>
       <th scope="row">1</th>
       <td>Mark</td>
@@ -30,4 +40,8 @@
       <td>twitter</td>
     </tr>
   </tbody>
-</table>
+
+    }
+}
+
+ 
