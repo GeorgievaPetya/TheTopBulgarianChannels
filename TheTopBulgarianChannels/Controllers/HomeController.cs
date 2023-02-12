@@ -1,26 +1,34 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using TheTopBulgarianChannels.Models;
-
-namespace TheTopBulgarianChannels.Controllers
+﻿namespace TheTopBulgarianChannels.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using TheTopBulgarianChannels.DataModels;
+    using TheTopBulgarianChannels.Models;
+    using TheTopBulgarianChannels.Service;
+
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IYouTubeService youTubeService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IYouTubeService youTubeService)
         {
-            _logger = logger;
+            this.youTubeService = youTubeService;
         }
 
+        
         public IActionResult Index()
         {
-            return View();
+            var youTubeChannels = this.youTubeService.GetAll();
+
+            var model = new YouTubeChannelViewModel
+            {
+                List = GetYouTubeChannelViewModel(youTubeChannels),
+              
+            };
+
+            return View(model);
+           
         }
 
         public IActionResult Privacy()
@@ -32,6 +40,49 @@ namespace TheTopBulgarianChannels.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+
+        private YouTubeChannel GetYouTubeChannelDataModel(YouTubeChannelViewModel youtubechannel)
+        {
+            return new YouTubeChannel
+            {
+                Id = youtubechannel.Id,
+                ChannelName = youtubechannel.ChannelName,
+                ChannelUrl = youtubechannel.ChannelUrl,
+                Subscribers = youtubechannel.Subscribers,
+                Views = youtubechannel.Views,
+                Category = youtubechannel.Category,
+                Country = youtubechannel.Country,
+                ChannelHandel = youtubechannel.ChannelHandel,
+            };
+        }
+
+        private YouTubeChannelViewModel GetYouTubeChannelViewModel(YouTubeChannel y)
+        {
+            return new YouTubeChannelViewModel
+            {
+                Id = y.Id,
+                ChannelName = y.ChannelName,
+                ChannelUrl = y.ChannelUrl,
+                Subscribers = y.Subscribers,
+                Views = y.Views,
+                Category = y.Category,
+                Country = y.Country,
+                ChannelHandel = y.ChannelHandel,
+            };
+        }
+
+        private List<YouTubeChannelViewModel> GetYouTubeChannelViewModel(List<YouTubeChannel> source)
+        {
+            var youTubeChannels = new List<YouTubeChannelViewModel>();
+
+            foreach (var y in source)
+            {
+                youTubeChannels.Add(GetYouTubeChannelViewModel(y));
+            }
+
+            return youTubeChannels;
         }
     }
 }
