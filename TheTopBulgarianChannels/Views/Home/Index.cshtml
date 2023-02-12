@@ -1,47 +1,38 @@
-﻿@model YouTubeChannelViewModelList
+﻿@model YouTubeChannelViewModel
 
 @if (Model == null || Model.List == null || Model.List.Count == 0)
 {
     <h2>no added youtube channel at the moment</h2>
     <div>Maybe you want to <a href="/Home/AddYouTubeChannel">add a YouTube Channel</a></div>
 }
-else
-{
-  <table class="table">
-  <caption>List of users</caption>
-  <thead>
+
+<table class="table">
+  <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Id</th>
+      <th scope="col">ChannelName</th>
+      <th scope="col">Subscribers</th>
+      <th scope="col">Views</th>
     </tr>
-  </thead>
-  </table>
-    @foreach (var youtubechannel in Model.List)
-    {
-         <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>twitter</td>
-    </tr>
-  </tbody>
+  </thead>  
+    @{
+        //else
+        //{
+            foreach (var channel in Model.List)
+            {
+                 <tr>
+                 <th scope="row">@channel.Id</th>
+                 <td>@channel.ChannelName</td>
+                 <td>@channel.Subscribers</td>
+                 <td>@channel.Views</td>
+                 </tr>
+            }
+        //}
 
     }
-}
+    <tbody >
+    </tbody>     
+</table>
+
 
  
