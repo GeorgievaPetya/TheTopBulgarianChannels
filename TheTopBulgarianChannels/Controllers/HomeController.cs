@@ -54,12 +54,13 @@
                 Views = youtubechannel.Views,
                 Category = youtubechannel.Category,
                 Country = youtubechannel.Country,
-                ChannelHandel = youtubechannel.ChannelHandel,
+                ChannelHandle = youtubechannel.ChannelHandle,
             };
         }
 
         private YouTubeChannelViewModel GetYouTubeChannelViewModel(YouTubeChannel y)
         {
+            
             return new YouTubeChannelViewModel
             {
                 Id = y.Id,
@@ -69,7 +70,7 @@
                 Views = y.Views,
                 Category = y.Category,
                 Country = y.Country,
-                ChannelHandel = y.ChannelHandel,
+                ChannelHandle = y.ChannelHandle,
             };
         }
 

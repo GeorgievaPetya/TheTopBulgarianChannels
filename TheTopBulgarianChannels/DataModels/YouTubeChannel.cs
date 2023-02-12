@@ -6,7 +6,7 @@
 
         public string ChannelName { get; set; }
 
-        public string ChannelHandel { get; set; }
+        public string ChannelHandle { get; set; }
 
         public int Subscribers { get; set; }
 

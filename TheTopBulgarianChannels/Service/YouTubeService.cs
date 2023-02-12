@@ -14,6 +14,8 @@
             this.db = db;
         }
 
-        public List<YouTubeChannel> GetAll() => this.db.YouTubeChannels.ToList();
+        public List<YouTubeChannel> GetAll() => this.db.YouTubeChannels.OrderByDescending(y => y.Subscribers).ToList();
+        //public List<YouTubeChannel> GetAll() => this.db.YouTubeChannels.ToList();
+        
     }
 }

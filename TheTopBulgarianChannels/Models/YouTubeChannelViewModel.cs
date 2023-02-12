@@ -14,7 +14,7 @@
 
         public string ChannelUrl { get; set; }
 
-        public string ChannelHandel { get; set; }
+        public string ChannelHandle { get; set; }
 
         public Category Category { get; set; }
 

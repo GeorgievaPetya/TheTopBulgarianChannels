@@ -61,7 +61,7 @@ namespace TheTopBulgarianChannels.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ChannelHandel")
+                    b.Property<string>("ChannelHandle")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ChannelName")

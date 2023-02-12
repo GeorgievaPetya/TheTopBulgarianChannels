@@ -9,24 +9,32 @@
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Id</th>
+      <th scope="col">Rank</th>
       <th scope="col">ChannelName</th>
+      <th scope="col">ChannelHandle</th>
       <th scope="col">Subscribers</th>
       <th scope="col">Views</th>
+      <th scope="col">Category</th>
+      
     </tr>
   </thead>  
     @{
         //else
         //{
-            foreach (var channel in Model.List)
+        var rank = 1;
+        foreach (var channel in Model.List)
             {
                  <tr>
-                 <th scope="row">@channel.Id</th>
+                 <th scope="row">@rank</th>
                  <td>@channel.ChannelName</td>
+                 <td>@channel.ChannelHandle</td>
                  <td>@channel.Subscribers</td>
                  <td>@channel.Views</td>
-                 </tr>
-            }
+                 <td>@channel.Category</td>
+                     
+            </tr>
+            rank++;
+        }
         //}
 
     }
