@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TheTopBulgarianChannels.DataAccess;
+using TheTopBulgarianChannels.Service;
 
 namespace TheTopBulgarianChannels
 {
@@ -26,6 +27,8 @@ namespace TheTopBulgarianChannels
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddTransient<IYouTubeService, YouTubeService>();
 
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
         }
