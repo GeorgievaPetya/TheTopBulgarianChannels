@@ -8,6 +8,8 @@
 
         public string ChannelHandle { get; set; }
 
+        public string ChannelId { get; set; }
+
         public int Subscribers { get; set; }
 
         public long Views { get; set; }  

@@ -28,8 +28,10 @@
             };
 
             return View(model);
-           
+            
+
         }
+     
 
         public IActionResult Privacy()
         {
@@ -55,6 +57,7 @@
                 Category = youtubechannel.Category,
                 Country = youtubechannel.Country,
                 ChannelHandle = youtubechannel.ChannelHandle,
+                ChannelId = youtubechannel.ChannelId
             };
         }
 
@@ -71,6 +74,7 @@
                 Category = y.Category,
                 Country = y.Country,
                 ChannelHandle = y.ChannelHandle,
+                ChannelId= y.ChannelId
             };
         }
 

@@ -1,3 +1,4 @@
+using Google.Apis.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +30,12 @@ namespace TheTopBulgarianChannels
             services.AddControllersWithViews();
 
             services.AddTransient<IYouTubeService, YouTubeService>();
+
+            //services.AddTransient<IYouTubeApiService, YouTubeApiService > ();
+           // {
+            //   ApiKey = "API_KEY",
+            //   ApplicationName = "APPLICATION_NAME"
+             //  }));
 
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
         }

@@ -22,5 +22,7 @@ namespace TheTopBulgarianChannels
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+        
     }
 }
