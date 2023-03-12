@@ -13,8 +13,8 @@ namespace TheTopBulgarianChannels.DataAccess
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Country> Countries { get; set; }
-
-       protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public DbSet<Instagram> Instagram { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>()
                 .HasMany(c => c.YouTubeChannels)

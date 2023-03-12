@@ -7,26 +7,26 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TheTopBulgarianChannels.DataAccess;
 using TheTopBulgarianChannels.DataModels;
-using TheTopBulgarianChannels.Service;
 
 namespace TheTopBulgarianChannels.Controllers
 {
-    public class YouTubeChannelsController : Controller
+    public class InstagramController : Controller
     {
-        private readonly AppDbContext _context; 
-        public YouTubeChannelsController(AppDbContext context)
+        private readonly AppDbContext _context;
+
+        public InstagramController(AppDbContext context)
         {
-           _context = context;
-        }
-   
-        // GET: YouTubeChannels
-        public async Task<IActionResult> Index()
-        {
-            
-            return View(await _context.YouTubeChannels.OrderByDescending(y => y.Subscribers).ToListAsync());
+            _context = context;
         }
 
-        // GET: YouTubeChannels/Details/5
+        // GET: Instagram
+        public async Task<IActionResult> Index()
+        {
+           // return View(await _context.Instagram.ToListAsync());
+            return View(await _context.Instagram.OrderByDescending(y => y.Followers).ToListAsync());
+        }
+
+        // GET: Instagram/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,40 +34,39 @@ namespace TheTopBulgarianChannels.Controllers
                 return NotFound();
             }
 
-            var youTubeChannel = await _context.YouTubeChannels
+            var instagram = await _context.Instagram
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (youTubeChannel == null)
+            if (instagram == null)
             {
                 return NotFound();
             }
 
-            return View(youTubeChannel);
+            return View(instagram);
         }
 
-        // GET: YouTubeChannels/Create
+        // GET: Instagram/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: YouTubeChannels/Create
+        // POST: Instagram/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ChannelName,ChannelHandle,ChannelId,Subscribers,Views,Videos,ChannelUrl")] YouTubeChannel youTubeChannel)
+        public async Task<IActionResult> Create([Bind("Id,Name,Followers,Posts")] Instagram instagram)
         {
-            
             if (ModelState.IsValid)
             {
-                _context.Add(youTubeChannel);
+                _context.Add(instagram);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(youTubeChannel);
+            return View(instagram);
         }
 
-        // GET: YouTubeChannels/Edit/5
+        // GET: Instagram/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +74,22 @@ namespace TheTopBulgarianChannels.Controllers
                 return NotFound();
             }
 
-            var youTubeChannel = await _context.YouTubeChannels.FindAsync(id);
-            if (youTubeChannel == null)
+            var instagram = await _context.Instagram.FindAsync(id);
+            if (instagram == null)
             {
                 return NotFound();
             }
-            return View(youTubeChannel);
+            return View(instagram);
         }
 
-        // POST: YouTubeChannels/Edit/5
+        // POST: Instagram/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ChannelName,ChannelHandle,ChannelId,Subscribers,Views,Videos,ChannelUrl")] YouTubeChannel youTubeChannel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Followers,Posts")] Instagram instagram)
         {
-            if (id != youTubeChannel.Id)
+            if (id != instagram.Id)
             {
                 return NotFound();
             }
@@ -99,12 +98,12 @@ namespace TheTopBulgarianChannels.Controllers
             {
                 try
                 {
-                    _context.Update(youTubeChannel);
+                    _context.Update(instagram);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!YouTubeChannelExists(youTubeChannel.Id))
+                    if (!InstagramExists(instagram.Id))
                     {
                         return NotFound();
                     }
@@ -115,10 +114,10 @@ namespace TheTopBulgarianChannels.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(youTubeChannel);
+            return View(instagram);
         }
 
-        // GET: YouTubeChannels/Delete/5
+        // GET: Instagram/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,30 +125,30 @@ namespace TheTopBulgarianChannels.Controllers
                 return NotFound();
             }
 
-            var youTubeChannel = await _context.YouTubeChannels
+            var instagram = await _context.Instagram
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (youTubeChannel == null)
+            if (instagram == null)
             {
                 return NotFound();
             }
 
-            return View(youTubeChannel);
+            return View(instagram);
         }
 
-        // POST: YouTubeChannels/Delete/5
+        // POST: Instagram/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var youTubeChannel = await _context.YouTubeChannels.FindAsync(id);
-            _context.YouTubeChannels.Remove(youTubeChannel);
+            var instagram = await _context.Instagram.FindAsync(id);
+            _context.Instagram.Remove(instagram);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool YouTubeChannelExists(int id)
+        private bool InstagramExists(int id)
         {
-            return _context.YouTubeChannels.Any(e => e.Id == id);
+            return _context.Instagram.Any(e => e.Id == id);
         }
     }
 }

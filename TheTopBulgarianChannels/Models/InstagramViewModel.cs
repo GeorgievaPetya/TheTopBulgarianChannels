@@ -1,6 +1,6 @@
-﻿namespace TheTopBulgarianChannels.DataModels
+﻿namespace TheTopBulgarianChannels.Models
 {
-    public class Instagram
+    public class InstagramViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
