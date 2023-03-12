@@ -1,0 +1,64 @@
+﻿@model TheTopBulgarianChannels.DataModels.YouTubeChannel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>YouTubeChannel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="ChannelName" class="control-label"></label>
+                <input asp-for="ChannelName" class="form-control" />
+                <span asp-validation-for="ChannelName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChannelHandle" class="control-label"></label>
+                <input asp-for="ChannelHandle" class="form-control" />
+                <span asp-validation-for="ChannelHandle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChannelId" class="control-label"></label>
+                <input asp-for="ChannelId" class="form-control" />
+                <span asp-validation-for="ChannelId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subscribers" class="control-label"></label>
+                <input asp-for="Subscribers" class="form-control" />
+                <span asp-validation-for="Subscribers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Views" class="control-label"></label>
+                <input asp-for="Views" class="form-control" />
+                <span asp-validation-for="Views" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Videos" class="control-label"></label>
+                <input asp-for="Videos" class="form-control" />
+                <span asp-validation-for="Videos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChannelUrl" class="control-label"></label>
+                <input asp-for="ChannelUrl" class="form-control" />
+                <span asp-validation-for="ChannelUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

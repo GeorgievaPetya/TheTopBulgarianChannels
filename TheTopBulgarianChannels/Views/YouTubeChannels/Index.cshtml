@@ -1,0 +1,62 @@
+﻿@model IEnumerable<TheTopBulgarianChannels.DataModels.YouTubeChannel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>YouTube Ranking</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Rank</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ChannelName)
+                </th>        
+                <th>
+                    @Html.DisplayNameFor(model => model.Subscribers)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Views)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Videos)
+                </th>
+                
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+@{
+    var rank = 1;
+    @foreach (var item in Model) {
+            <tr>
+                 <th scope="row">@rank</th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChannelName)
+                </td>          
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subscribers)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Views)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Videos)
+                </td>
+               
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+            rank++;
+    }
+}
+        </tbody>
+    </table>

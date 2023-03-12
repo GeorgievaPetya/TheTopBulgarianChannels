@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TheTopBulgarianChannels.DataAccess;
 
 namespace TheTopBulgarianChannels.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230312074058_AddColomnVideos")]
+    partial class AddColomnVideos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,49 +94,6 @@ namespace TheTopBulgarianChannels.Migrations
                     b.ToTable("YouTubeChannels");
                 });
 
-            modelBuilder.Entity("TheTopBulgarianChannels.Models.YouTubeChannelViewModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ChannelHandle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ChannelId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ChannelName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ChannelUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CountryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Subscribers")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Videos")
-                        .HasColumnType("int");
-
-                    b.Property<long>("Views")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("CountryId");
-
-                    b.ToTable("YouTubeChannelViewModel");
-                });
-
             modelBuilder.Entity("TheTopBulgarianChannels.DataModels.YouTubeChannel", b =>
                 {
                     b.HasOne("TheTopBulgarianChannels.DataModels.Category", "Category")
@@ -143,19 +102,6 @@ namespace TheTopBulgarianChannels.Migrations
 
                     b.HasOne("TheTopBulgarianChannels.DataModels.Country", "Country")
                         .WithMany("YouTubeChannels")
-                        .HasForeignKey("CountryId");
-                });
-
-            modelBuilder.Entity("TheTopBulgarianChannels.Models.YouTubeChannelViewModel", b =>
-                {
-                    b.HasOne("TheTopBulgarianChannels.DataModels.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TheTopBulgarianChannels.DataModels.Country", "Country")
-                        .WithMany()
                         .HasForeignKey("CountryId");
                 });
 #pragma warning restore 612, 618

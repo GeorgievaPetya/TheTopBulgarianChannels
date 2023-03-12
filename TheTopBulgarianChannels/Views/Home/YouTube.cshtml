@@ -1,0 +1,50 @@
+﻿@model YouTubeChannelViewModelList
+
+@if (Model == null || Model.List == null || Model.List.Count == 0)
+{
+    <h2>no added youtube channel at the moment</h2>
+    <div>Maybe you want to <a href="/Home/YouTube">add a YouTube Channel</a></div>
+}
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Rank</th>
+      <th scope="col">ChannelName</th>      
+      <th scope="col">Subscribers</th>
+      <th scope="col">Views</th>
+      <th scope="col">Videos</th>
+      <th scope="col">Category</th>
+      
+    </tr>
+  </thead>  
+ @{
+     //else
+     //  {
+        var rank = 1;
+        foreach (var channel in Model.List)
+
+        
+            {
+                         <tr>
+                         <th scope="row">@rank</th>
+                         <td>@channel.ChannelName</td>                
+                         <td>@channel.Subscribers</td>
+                         <td>@channel.Views</td>
+                         <td>@channel.Videos</td>
+                         <td>@channel.CategoryId</td>
+                           <td>
+                             @Html.ActionLink("Edit", "Edit", new { id = channel.ChannelId }) |
+                             @Html.ActionLink("Details", "Details", new { id = channel.ChannelId }) |
+                             @Html.ActionLink("Delete", "Delete", new { id = channel.ChannelId })
+                           </td>
+                             
+                         </tr>
+            rank++;
+            }
+       // }
+
+   } 
+    <tbody >
+    </tbody>     
+</table>

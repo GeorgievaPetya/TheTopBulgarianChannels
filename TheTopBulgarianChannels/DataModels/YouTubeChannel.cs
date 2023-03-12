@@ -13,6 +13,7 @@
         public int Subscribers { get; set; }
 
         public long Views { get; set; }  
+        public int Videos { get; set; }
 
         public string ChannelUrl { get; set; } 
 

@@ -1,47 +1,4 @@
-﻿@model YouTubeChannelViewModelList
-
-@if (Model == null || Model.List == null || Model.List.Count == 0)
-{
-    <h2>no added youtube channel at the moment</h2>
-    <div>Maybe you want to <a href="/Home/AddYouTubeChannel">add a YouTube Channel</a></div>
-}
-
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Rank</th>
-      <th scope="col">ChannelName</th>
-      <th scope="col">ChannelHandle</th>
-      <th scope="col">Subscribers</th>
-      <th scope="col">Views</th>
-      <th scope="col">Category</th>
-      
-    </tr>
-  </thead>  
-    @{
-        //else
-        //{
-        var rank = 1;
-        foreach (var channel in Model.List)
-            {
-                 <tr>
-                 <th scope="row">@rank</th>
-                 <td>@channel.ChannelName</td>
-                 <td>@channel.ChannelHandle</td>
-                 <td>@channel.Subscribers</td>
-                 <td>@channel.Views</td>
-                 <td>@channel.Category</td>
-                     
-            </tr>
-            rank++;
-        }
-        //}
-
-    }
-    <tbody >
-    </tbody>     
-</table>
-
+﻿
 <h1 class="site_heading">Live Sub Counter</h1>
 <form class="form-inline">
     <input type="text" id="channel_id" placeholder="Channel ID (UCC2-EIXX2LSYInLPSR3kxPQ)">
@@ -81,6 +38,8 @@ function request_data(channel_id)
 			   	return document.getElementById("sub_count").innerHTML = "N/A";
 			}
 			document.getElementById("sub_count").innerHTML = output.items[0].statistics["subscriberCount"];
+            
+         
 		}
 		else if(this.readyState == 4)
 		{

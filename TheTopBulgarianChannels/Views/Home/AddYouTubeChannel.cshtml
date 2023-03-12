@@ -1,0 +1,22 @@
+﻿@model YouTubeChannelViewModel
+
+<h3>Add YouTube Channel</h3>
+
+<form asp-controller="Home" asp-action="AddYouTubeChannel">
+    <label class="col-form-label" asp-for="ChannelName"></label>
+    <input class="form-control" asp-for="ChannelName"/>
+
+    <label class="col-form-label" asp-for="ChannelId"></label>
+    <input class="form-control" asp-for="ChannelId" />
+
+    <label class="col-form-label" asp-for="Category"></label>
+    <input class="form-control" asp-for="Category" />
+
+    <label class="col-form-label" asp-for="Subscribers"></label>
+    <input class="form-control" asp-for="Subscribers" />
+
+    <label class="col-form-label" asp-for="Views"></label>
+    <input class="form-control" asp-for="Views" />
+
+    <button class="btn btn-primary">Add YouTube Channel</button>
+</form>

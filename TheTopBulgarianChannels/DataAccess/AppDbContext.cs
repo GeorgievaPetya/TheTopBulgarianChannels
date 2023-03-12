@@ -1,4 +1,6 @@
-﻿namespace TheTopBulgarianChannels.DataAccess
+﻿using Microsoft.EntityFrameworkCore;
+using TheTopBulgarianChannels.Models;
+namespace TheTopBulgarianChannels.DataAccess
 {
     using TheTopBulgarianChannels.DataModels;
     using Microsoft.EntityFrameworkCore;  
@@ -22,6 +24,8 @@
                .HasMany(c => c.YouTubeChannels)
                .WithOne(y => y.Country);
         }
+
+       public DbSet<TheTopBulgarianChannels.Models.YouTubeChannelViewModel> YouTubeChannelViewModel { get; set; }
     
     }
 }
