@@ -13,7 +13,14 @@ namespace TheTopBulgarianChannels.DataAccess
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Country> Countries { get; set; }
+
         public DbSet<Instagram> Instagram { get; set; }
+
+        public DbSet<Facebook> Facebook { get; set; }
+
+        public DbSet<TikTok> TikTok { get; set; }
+
+        public DbSet<Twitter> Twitter { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>()

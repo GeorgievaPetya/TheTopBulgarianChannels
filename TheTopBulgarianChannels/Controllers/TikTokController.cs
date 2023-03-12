@@ -10,22 +10,22 @@ using TheTopBulgarianChannels.DataModels;
 
 namespace TheTopBulgarianChannels.Controllers
 {
-    public class InstagramController : Controller
+    public class TikTokController : Controller
     {
         private readonly AppDbContext _context;
 
-        public InstagramController(AppDbContext context)
+        public TikTokController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: Instagram
+        // GET: TikTok
         public async Task<IActionResult> Index()
-        {           
-            return View(await _context.Instagram.OrderByDescending(y => y.Followers).ToListAsync());
+        {
+            return View(await _context.TikTok.ToListAsync());
         }
 
-        // GET: Instagram/Details/5
+        // GET: TikTok/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace TheTopBulgarianChannels.Controllers
                 return NotFound();
             }
 
-            var instagram = await _context.Instagram
+            var tikTok = await _context.TikTok
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (instagram == null)
+            if (tikTok == null)
             {
                 return NotFound();
             }
 
-            return View(instagram);
+            return View(tikTok);
         }
 
-        // GET: Instagram/Create
+        // GET: TikTok/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Instagram/Create
+        // POST: TikTok/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Followers,Posts")] Instagram instagram)
+        public async Task<IActionResult> Create([Bind("Id,UserName,Owner,Followers")] TikTok tikTok)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(instagram);
+                _context.Add(tikTok);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(instagram);
+            return View(tikTok);
         }
 
-        // GET: Instagram/Edit/5
+        // GET: TikTok/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace TheTopBulgarianChannels.Controllers
                 return NotFound();
             }
 
-            var instagram = await _context.Instagram.FindAsync(id);
-            if (instagram == null)
+            var tikTok = await _context.TikTok.FindAsync(id);
+            if (tikTok == null)
             {
                 return NotFound();
             }
-            return View(instagram);
+            return View(tikTok);
         }
 
-        // POST: Instagram/Edit/5
+        // POST: TikTok/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Followers,Posts")] Instagram instagram)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,UserName,Owner,Followers")] TikTok tikTok)
         {
-            if (id != instagram.Id)
+            if (id != tikTok.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace TheTopBulgarianChannels.Controllers
             {
                 try
                 {
-                    _context.Update(instagram);
+                    _context.Update(tikTok);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!InstagramExists(instagram.Id))
+                    if (!TikTokExists(tikTok.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace TheTopBulgarianChannels.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(instagram);
+            return View(tikTok);
         }
 
-        // GET: Instagram/Delete/5
+        // GET: TikTok/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace TheTopBulgarianChannels.Controllers
                 return NotFound();
             }
 
-            var instagram = await _context.Instagram
+            var tikTok = await _context.TikTok
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (instagram == null)
+            if (tikTok == null)
             {
                 return NotFound();
             }
 
-            return View(instagram);
+            return View(tikTok);
         }
 
-        // POST: Instagram/Delete/5
+        // POST: TikTok/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var instagram = await _context.Instagram.FindAsync(id);
-            _context.Instagram.Remove(instagram);
+            var tikTok = await _context.TikTok.FindAsync(id);
+            _context.TikTok.Remove(tikTok);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool InstagramExists(int id)
+        private bool TikTokExists(int id)
         {
-            return _context.Instagram.Any(e => e.Id == id);
+            return _context.TikTok.Any(e => e.Id == id);
         }
     }
 }
