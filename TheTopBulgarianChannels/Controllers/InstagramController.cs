@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TheTopBulgarianChannels.DataAccess;
 using TheTopBulgarianChannels.DataModels;
+using TheTopBulgarianChannels.Models;
+using TheTopBulgarianChannels.Service;
 
 namespace TheTopBulgarianChannels.Controllers
 {
@@ -21,7 +23,7 @@ namespace TheTopBulgarianChannels.Controllers
 
         // GET: Instagram
         public async Task<IActionResult> Index()
-        {           
+        {
             return View(await _context.Instagram.OrderByDescending(y => y.Followers).ToListAsync());
         }
 

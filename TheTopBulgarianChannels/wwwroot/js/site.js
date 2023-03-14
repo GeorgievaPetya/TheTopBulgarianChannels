@@ -1,9 +1,11 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-<script type="text/javascript">
-    document.getElementById("myButtonYouTube").onclick = function () {
-        location.href = "/YouTubeChannels/Index"
-    };
-</script>
+﻿$(document).ready(function () {
+    $('#myTable').DataTable({
+        "scrollY": "450px",
+        "scrollCollapse": true,
+        "paging": true,
+        columnDefs: [
+            { orderable: false, targets: 4 }
+        ],
+        order: [[1, 'asc']]
+    });
+});

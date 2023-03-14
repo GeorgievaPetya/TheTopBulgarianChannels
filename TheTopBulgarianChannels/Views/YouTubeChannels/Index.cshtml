@@ -9,34 +9,33 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<div class="table">
+    <table id="myTable" class="table table-bordered table-hover table-sm">
+        <thead>
+            <tr>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Rank</th>
-            <th>
-                @Html.DisplayNameFor(model => model.ChannelName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Subscribers)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Views)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Videos)
-            </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ChannelName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subscribers)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Views)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Videos)
+                </th>
+                <th scope="col">Action</th>
 
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @{
-            var rank = 1;
+            </tr>
+        </thead>
+        <tbody>
+
             @foreach (var item in Model)
             {
                 <tr>
-                    <th scope="row">@rank</th>
+
                     <td>
                         @Html.DisplayFor(modelItem => item.ChannelName)
                     </td>
@@ -55,9 +54,9 @@
                         <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                         <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     </td>
-                </tr>
-                rank++;
+                </tr>            
             }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
+
