@@ -9,29 +9,27 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Rank</th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Owner)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Followers)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @{
-            var rank = 1;
+<div class="table">
+    <table id="myTableTwitter" class="table table-bordered table-hover table-sm">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Owner)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Followers)
+                </th>
+                <th scope="row">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
             @foreach (var item in Model)
             {
                 <tr>
-                    <th scope="row">@rank</th>
                     <td>
                         @Html.DisplayFor(modelItem => item.UserName)
                     </td>
@@ -47,8 +45,7 @@
                         <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     </td>
                 </tr>
-                rank++;
             }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
