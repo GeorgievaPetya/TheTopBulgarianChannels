@@ -18,7 +18,7 @@
     public class HomeController : Controller
     {
         private readonly IYouTubeService youTubeService;
-        static readonly HttpClient client = new HttpClient();
+        
 
         public HomeController(IYouTubeService youTubeService)
         {

@@ -2,3 +2,8 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+<script type="text/javascript">
+    document.getElementById("myButtonYouTube").onclick = function () {
+        location.href = "/YouTubeChannels/Index"
+    };
+</script>

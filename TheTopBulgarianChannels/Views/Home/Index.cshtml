@@ -1,5 +1,65 @@
-﻿
-<h1>TO DO BUTTONS</h1>
+﻿<!DOCTYPE html>
 
+<html>
+<head>
+<style>
+.button {
+  background-image: url(
+  'https://www.logo.wine/a/logo/YouTube/YouTube-Logo.wine.svg');
+  background-size: cover;
+  background-color: white;
+            width: 350px;
+            height: 230px;
+            font-size: 2rem;
+  box-shadow: 10px -10px 5px  rgba(0,0,0,0.6);
+  -moz-box-shadow: 10px -10px 5px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: 10px -10px 5px  rgba(0,0,0,0.6);
+  -o-box-shadow: 10px -10px 5px  rgba(0,0,0,0.6);
+  border-radius:25px;
+}
 
- 
+.button2 {background-image: url(
+  'https://www.logo.wine/a/logo/Instagram/Instagram-Logo.wine.svg');} /* Instagram */
+.button3 {background-image: url(
+  'https://www.logo.wine/a/logo/Facebook/Facebook-f_Logo-Blue-Logo.wine.svg');} /* Facebook */ 
+.button4 {background-image: url(
+  'https://www.logo.wine/a/logo/Twitter/Twitter-Logo.wine.svg');} /* Twitter */ 
+.button5 {background-image: url(
+  'https://www.logo.wine/a/logo/TikTok/TikTok-Logomark%26Wordmark-Vertical-Logo.wine.svg');} /* TikTok */
+</style>
+</head>
+<body>
+
+<button id="myButtonYouTube" class="button"></button>
+<button id="myButtonInstagram"class="button button2"></button>
+<button id="myButtonFacebook"class="button button3"></button>
+<button id="myButtonTwitter"class="button button4"></button>
+<button id="myButtonTikTok"class="button button5"></button>
+
+</body>
+</html>
+<script type="text/javascript">
+    document.getElementById("myButtonYouTube").onclick = function () {
+        location.href = "/YouTubeChannels/Index"
+    };
+</script>
+<script type="text/javascript">
+    document.getElementById("myButtonInstagram").onclick = function () {
+        location.href = "/Instagram/Index"
+    };
+</script>
+<script type="text/javascript">
+    document.getElementById("myButtonFacebook").onclick = function () {
+        location.href = "/Facebook/Index"
+    };
+</script>
+<script type="text/javascript">
+    document.getElementById("myButtonTikTok").onclick = function () {
+        location.href = "/TikTok/Index"
+    };
+</script>
+<script type="text/javascript">
+    document.getElementById("myButtonTwitter").onclick = function () {
+        location.href = "/Twitter/Index"
+    };
+</script>
