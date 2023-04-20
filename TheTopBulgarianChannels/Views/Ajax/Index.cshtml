@@ -1,0 +1,16 @@
+﻿
+<div id="container"></div>
+
+<button onclick="getData()" class="btn btn-primary">Get data</button>
+
+<script>
+    const getData = () => {
+        fetch(`/Home/GetRandomCarImage`)
+            .then((response) => response.json())
+            .then((data) => handleRespons(data));
+    }
+
+    const handleRespons = (data) => {document.getElementById("container").innerHTML += `<div>Name: ${data.name}; 
+        
+    }
+</script>

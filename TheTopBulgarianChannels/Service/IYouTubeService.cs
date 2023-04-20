@@ -5,6 +5,7 @@
     using TheTopBulgarianChannels.DataModels;
     public interface IYouTubeService
     {
+        // TO DO
         List<YouTubeChannel> GetAll();
 
         void Add(YouTubeChannel youTubeChannel);

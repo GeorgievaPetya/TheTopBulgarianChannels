@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using TheTopBulgarianChannels.DataAccess;
-using TheTopBulgarianChannels.DataModels;
-using TheTopBulgarianChannels.Service;
-
-namespace TheTopBulgarianChannels.Controllers
+﻿namespace TheTopBulgarianChannels.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.EntityFrameworkCore;
+    using TheTopBulgarianChannels.DataAccess;
+    using TheTopBulgarianChannels.DataModels;
+    using TheTopBulgarianChannels.Service;
+
     public class YouTubeChannelsController : Controller
     {
         private readonly AppDbContext _context; 
@@ -18,7 +18,7 @@ namespace TheTopBulgarianChannels.Controllers
         {
            _context = context;
         }
-   
+
         // GET: YouTubeChannels
         public async Task<IActionResult> Index()
         {
@@ -57,7 +57,11 @@ namespace TheTopBulgarianChannels.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,ChannelName,ChannelHandle,ChannelId,Subscribers,Views,Videos,ChannelUrl")] YouTubeChannel youTubeChannel)
         {
-            
+            if (youTubeChannel.ChannelName.Length == 0)
+            {
+                throw new Exception("The Lenght cannot be smaller than 1");
+
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(youTubeChannel);
